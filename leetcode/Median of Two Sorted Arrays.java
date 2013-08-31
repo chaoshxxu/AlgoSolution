@@ -10,15 +10,11 @@ public class Solution {
     }
     
     private int findWithPos(int A[], int B[], int pos) {
-        if (A.length == 0) {
-            return B[pos];
+        try {
+            return findInFirst(A, B, pos);
+        } catch (Exception e) {
+            return findInFirst(B, A, pos);
         }
-        if (B.length == 0) {
-            return A[pos];
-        }
-        
-        int tmp = findInFirst(A, B, pos);
-        return tmp != 0 ? tmp : findInFirst(B, A, pos);
     }
     
     private int findInFirst(int A[], int B[], int pos) {
@@ -36,6 +32,6 @@ public class Solution {
                 return A[mid];
             }
         }
-        return 0;
+        throw new RuntimeException();
     }
 }
